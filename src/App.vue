@@ -16,6 +16,10 @@
  import Home from './components/Home.vue' ;
 
     export default {
+
+        created(){
+         this.$store.dispatch('setStock');
+   },
           
           components:{
               'app-header':  Header ,

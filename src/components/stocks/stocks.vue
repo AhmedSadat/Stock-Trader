@@ -1,5 +1,32 @@
 <template>
-    <div>
-        <p> hi from stocks</p>
+    <div class="sockRoot">
+       <app-stock v-for="(stock , index ) in stocks" :stock="stock" v-bind:key="index"></app-stock>
     </div>
 </template>
+<script>
+import Stock from './stock.vue'
+export default {
+
+    created(){
+          this.stocks = this.$store.getters.stocks ;
+    },
+   
+    
+    data:()=>{
+        return {
+                   stocks:[] , 
+      
+        }
+    },
+
+    components: {
+        'app-stock' : Stock
+    }
+}
+</script>
+
+<style  scoped>
+  .sockRoot{
+      margin:10px ;
+  }
+</style>
