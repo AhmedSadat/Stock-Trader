@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-6 col-sm-4">
+    <div class="col-sm-6 col-sm-4 box">
        <div class="panel panel-success">
            <div class="panel-heading">
               <h3 class="panel-title">
@@ -19,28 +19,44 @@
                    <button 
                    class="btn btn-success"
                     @click="buyStock"
-                     :disabled = " quantity <= 0 " > Buy  </button>
+                     :disabled = "insufficientFund || quantity <= 0 " > {{ insufficientFund ? "Buy" : "insufficient Fund" }}  </button>
                </div>
            </div>
        </div>
     </div>
 </template>
 <script>
+
+
 export default {
+    
+
+    computed:{
+
+        funds(){
+            return this.$store.getters.funds ;
+        },
+                 insufficientFund(){
+                     return this.quantity * stock.price  >  this.funds ;
+                 }
+    },
+
     props:["stock"] ,
 
     methods:{
-                    
+                 
                     buyStock(){
 
-                        const stock = {
+                        const order = {
                             stockID : this.stock.id ,
                             stockPrice: this.stock.price ,
-                            stockQuantity: this.quantity , 
+                            stockQuantity: +this.quantity , 
                         }
-
-
-                        console.log(stock + typeof(this.stock.price) );
+                         
+                         console.log("from buyStock method" + order );
+                         this.$store.dispatch('buyStock', order);
+                         this.quantity = 0 ;
+                        
                     }
     },
 
@@ -52,3 +68,11 @@ export default {
     }
 
 </script>
+
+<style scoped>
+
+ .box{
+           padding: 10px;
+           margin: 10px;
+ }
+</style>

@@ -23,10 +23,10 @@ const mutations = {
 
  const actions = { 
      
-    buyStock: ({commit} , order)=>{
+    // buyStock: ({commit} , order)=>{
 
-           commit()
-                     } , 
+    //        commit()
+    //                  } , 
                      
         setStock :({commit})=>{
              commit('SET_STOCKS' , data)

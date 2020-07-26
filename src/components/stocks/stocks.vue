@@ -28,5 +28,6 @@ export default {
 <style  scoped>
   .sockRoot{
       margin:10px ;
+      padding: 10px;
   }
 </style>
