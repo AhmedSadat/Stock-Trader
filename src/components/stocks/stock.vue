@@ -23,7 +23,9 @@
                </div>
            </div>
        </div>
+
     </div>
+
 </template>
 <script>
 
@@ -58,7 +60,9 @@ export default {
                          this.$store.dispatch('buyStock', order);
                          this.quantity = 0 ;
                         
-                    }
+                    },
+
+                   
     },
 
     data:()=>{

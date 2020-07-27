@@ -15,7 +15,9 @@ const mutations = {
     },
 
     'RND_STOCKS'(state){
-               
+               state.stocks.forEach(element => {
+                   element.price = Math.round(element.price * (1 + Math.random() -0.5  ) );
+               });
     } ,
 
    
@@ -34,6 +36,7 @@ const mutations = {
         
         randomizeStock: ({commit})=>{
             commit('RND_STOCKS');
+            console.log("from randomize");
         }
 }
 

@@ -3,7 +3,7 @@
        <div class="panel panel-success">
            <div class="panel-heading">
               <h3 class="panel-title">
-                {{ stock.name }} <small>(price:{{ stock.price }} | Quality: {{ stock.quantity}} )</small>
+                {{ stock.name }} <small>(price:{{ stock.price }} | Quantity: {{ stock.quantity}} )</small>
               </h3>
            </div>
            <div class="panel-body">
@@ -19,7 +19,7 @@
                    <button 
                    class="btn btn-success"
                     @click="sellStock"
-                     :disabled = " quantity <= 0 " > Sell  </button>
+                     :disabled = " checkQuantity || quantity <= 0 " > {{ checkQuantity ? 'have not enough quantity' : 'sell' }}  </button>
                </div>
            </div>
        </div>
@@ -31,6 +31,13 @@
 
 export default {
     props:["stock"] ,
+
+    computed:{
+                
+                checkQuantity(){
+                    return this.stock.quantity < this.quantity
+                }
+    },
 
     methods:{
                  

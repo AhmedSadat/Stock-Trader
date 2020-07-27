@@ -7,6 +7,10 @@
 import Stock from './stock.vue'
 export default {
 
+    methods:{
+               
+    },
+
     created(){
           this.stocks = this.$store.getters.stocks ;
     },
