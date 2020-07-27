@@ -19,7 +19,7 @@
                    <button 
                    class="btn btn-success"
                     @click="buyStock"
-                     :disabled = "insufficientFund || quantity <= 0 " > {{ insufficientFund ? "Buy" : "insufficient Fund" }}  </button>
+                     :disabled = "insufficientFund || quantity <= 0 " > {{ insufficientFund ?  "insufficient Fund" : 'Buy' }}  </button>
                </div>
            </div>
        </div>
@@ -31,17 +31,18 @@
 export default {
     
 
-    computed:{
-
-        funds(){
-            return this.$store.getters.funds ;
-        },
-                 insufficientFund(){
-                     return this.quantity * stock.price  >  this.funds ;
-                 }
-    },
 
     props:["stock"] ,
+
+    computed:{
+                  funds(){
+                               return this.$store.getters.funds ;
+                  },
+
+                  insufficientFund(){
+                      return this.stock.price * this.quantity > this.funds
+                  }
+    },
 
     methods:{
                  

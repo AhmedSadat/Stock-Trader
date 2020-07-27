@@ -2,11 +2,14 @@
 <template>
   <div class="Root">
      <div class="topnav" id="myTopnav">
-  <router-link to="/" tag="a" exact  active-class="active">Stock Trader</router-link>
-  <router-link to="/stocks" tag="a" active-class="active" >Stocks</router-link>
-  <router-link to="/portfolio" tag="a" active-class="active" >Protfolio</router-link>
-  <router-link to="/a" style="float:right" tag="a" active-class="active">Save Data</router-link>
-  <router-link to="/b" style="float:right" tag="a" active-class="active">Load Data</router-link>
+      <router-link to="/" tag="a" exact  active-class="active">Stock Trader</router-link>
+      <router-link to="/stocks" tag="a" active-class="active" >Stocks</router-link>
+      <router-link to="/portfolio" tag="a" active-class="active" >Protfolio</router-link>
+      <router-link to="" style="float:right" tag="a" >{{funds | currency}}</router-link>
+      <router-link to="/a" style="float:right" tag="a" active-class="active">Save Data</router-link>
+      <router-link to="/b" style="float:right" tag="a" active-class="active">Load Data</router-link>
+      <router-link to="/c" style="float:right" tag="a" active-class="active">End Day</router-link>
+
   <!-- <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a> -->
 </div>
   </div>
@@ -24,7 +27,15 @@
 //   }
 // }
 
-export default {};
+export default {
+ 
+ computed:{
+               funds(){
+                 return this.$store.getters.funds ;
+               }
+ }
+
+};
 </script>
 
 
